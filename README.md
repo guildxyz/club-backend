@@ -35,8 +35,8 @@ This will start the app on localhost on the port configured in the _.env_ file.
 
 ### Owner-only
 
-- `[POST] save-list`: generates a Merkle tree based on an input file and saves the claim data mapped to the tree's root (cohortId). The generated root can be used to call the _addCohort_ function of the contract
-- `[DELETE] delete-cohort`: deletes a cohort from the database if it's not already added to the contract
+- `[POST]` `save-list`: generates a Merkle tree based on an input file and saves the claim data mapped to the tree's root (cohortId). The generated root can be used to call the _addCohort_ function of the contract
+- `[DELETE]` `delete-cohort`: deletes a cohort from the database if it's not already added to the contract
 
 Note: example input files for these endpoints can be found in the project's _example_ directory. Notice they both need a signature (used to verify the caller's account). Signing example using [ethers.js](https://github.com/ethers-io/ethers.js/):
 
@@ -50,11 +50,11 @@ console.log(ethers.utils.verifyMessage(messageHashBytes, signature)); // Should 
 
 ### General
 
-- `[GET] hello?name=World`: a test endpoint with an optional parameter
-- `[GET] cohort/:cohortId`: checks if a specific cohort with _cohortId_ exists in the database or the contract. If both are true, returns it's data
-- `[GET] cohort-ids/:account`: returns the IDs of the cohorts the _account_ is in
-- `[GET] claim-data/:cohortId/:account`: returns the claim data for a specific _account_ in a specific cohort (_cohortId_)
-- `[GET] all-claim-data/:account`: returns the claim data for a specific _account_ from all the cohorts it is in
+- `[GET]` `hello?name=World`: a test endpoint with an optional parameter
+- `[GET]` `cohort/:cohortId`: checks if a specific cohort with _cohortId_ exists in the database or the contract. If both are true, returns it's data
+- `[GET]` `cohort-ids/:account`: returns the IDs of the cohorts the _account_ is in
+- `[GET]` `claim-data/:cohortId/:account`: returns the claim data for a specific _account_ in a specific cohort (_cohortId_)
+- `[GET]` `all-claim-data/:account`: returns the claim data for a specific _account_ from all the cohorts it is in
 
 Note: the claim data are used to call the _claim_ function in the contract.
 
