@@ -41,7 +41,7 @@ This will start the app on localhost on the port configured in the _.env_ file.
 Note: example input files for these endpoints can be found in the project's _example_ directory. Notice they both need a signature (used to verify the caller's account). Signing example using [ethers.js](https://github.com/ethers-io/ethers.js/):
 
 ```ts
-const messageHash = ethers.utils.id(message); // "message" is the data to be signed, i.e. the input list (in the case of save-list) or the cohort ID (in the case of delete-cohort).
+const messageHash = ethers.utils.id(JSON.stringify(message)); // "message" is the data to be signed, i.e. the input list (in the case of save-list) or the cohort ID (in the case of delete-cohort).
 const messageHashBytes = ethers.utils.hexlify(messageHash);
 const signature = await wallet.signMessage(messageHashBytes);
 console.log(signature); // The signature we need.
@@ -58,3 +58,5 @@ console.log(ethers.utils.verifyMessage(messageHashBytes, signature)); // Should 
 
 Note: the claim data are used to call the _claim_ function in the contract.
 
+curl -i -X POST -H 'Content-Type: application/json' -d @example/save-list-input-example.json http://localhost:3000/api/save-list
+curl -i -X DELETE -H 'Content-Type: application/json' -d @example/delete-cohort-input-example.json http://localhost:3000/api/delete-cohort

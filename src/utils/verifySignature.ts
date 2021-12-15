@@ -1,8 +1,8 @@
 import getMessageSigner from "./getMessageSigner.js";
 
-const verifySignature = (message: string, signature: string) => {
+const verifySignature = (message: object, signature: string) => {
   try {
-    return getMessageSigner(message, signature) === process.env.ADMIN_ADDRESS;
+    return getMessageSigner(JSON.stringify(message), signature) === process.env.ADMIN_ADDRESS;
   } catch (e) {
     console.log(e);
     throw e;
