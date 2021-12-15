@@ -42,10 +42,10 @@ Note: example input files for these endpoints can be found in the project's _exa
 
 ```ts
 const messageHash = ethers.utils.id(JSON.stringify(message)); // "message" is the data to be signed, i.e. the input list (in the case of save-list) or the cohort ID (in the case of delete-cohort).
-const messageHashBytes = ethers.utils.hexlify(messageHash);
-const signature = await wallet.signMessage(messageHashBytes);
+const messageHashHex = ethers.utils.hexlify(messageHash);
+const signature = await wallet.signMessage(messageHashHex);
 console.log(signature); // The signature we need.
-console.log(ethers.utils.verifyMessage(messageHashBytes, signature)); // Should return the signer's address.
+console.log(ethers.utils.verifyMessage(messageHashHex, signature)); // Should return the signer's address.
 ```
 
 ### General
@@ -57,6 +57,3 @@ console.log(ethers.utils.verifyMessage(messageHashBytes, signature)); // Should 
 - `[GET]` `all-claim-data/:account`: returns the claim data for a specific _account_ from all the cohorts it is in
 
 Note: the claim data are used to call the _claim_ function in the contract.
-
-curl -i -X POST -H 'Content-Type: application/json' -d @example/save-list-input-example.json http://localhost:3000/api/save-list
-curl -i -X DELETE -H 'Content-Type: application/json' -d @example/delete-cohort-input-example.json http://localhost:3000/api/delete-cohort
