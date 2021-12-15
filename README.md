@@ -41,11 +41,10 @@ This will start the app on localhost on the port configured in the _.env_ file.
 Note: example input files for these endpoints can be found in the project's _example_ directory. Notice they both need a signature (used to verify the caller's account). Signing example using [ethers.js](https://github.com/ethers-io/ethers.js/):
 
 ```ts
-const messageHash = ethers.utils.id(JSON.stringify(message)); // "message" is the data to be signed, i.e. the input list (in the case of save-list) or the cohort ID (in the case of delete-cohort).
-const messageHashHex = ethers.utils.hexlify(messageHash);
-const signature = await wallet.signMessage(messageHashHex);
+const message = JSON.stringify(input); // "input" is the data to be signed, i.e. the input list (in the case of save-list) or the cohort ID (in the case of delete-cohort).
+const signature = await wallet.signMessage(message);
 console.log(signature); // The signature we need.
-console.log(ethers.utils.verifyMessage(messageHashHex, signature)); // Should return the signer's address.
+console.log(ethers.utils.verifyMessage(message, signature)); // Should return the signer's address.
 ```
 
 ### General
