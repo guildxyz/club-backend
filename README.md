@@ -42,7 +42,7 @@ Note: example input files for these endpoints can be found in the project's _exa
 
 ```ts
 const messageHash = ethers.utils.id(message); // "message" is the data to be signed, i.e. the input list (in the case of save-list) or the cohort ID (in the case of delete-cohort).
-const messageHashBytes = ethers.utils.arrayify(messageHash);
+const messageHashBytes = ethers.utils.hexlify(messageHash);
 const signature = await wallet.signMessage(messageHashBytes);
 console.log(signature); // The signature we need.
 console.log(ethers.utils.verifyMessage(messageHashBytes, signature)); // Should return the signer's address.
