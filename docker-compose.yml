@@ -1,0 +1,34 @@
+version: "3.7"
+services:
+  app:
+    image: zgendao/club-backend:main
+    restart: unless-stopped
+    env_file:
+      - club-backend.env
+    networks:
+      - proxy
+    volumes:
+      - lowdb:/app/merkle-db.json:rw
+
+  caddy:
+    image: caddy:2.4.6-alpine
+    restart: unless-stopped
+    env_file:
+      - caddy.env
+    networks:
+      - proxy
+    ports:
+      - 80:8080
+      - 443:4443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-config:/config:rw
+      - caddy-data:/data:rw
+
+volumes:
+  lowdb:
+  caddy-config:
+  caddy-data:
+
+networks:
+  proxy:
