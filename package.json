@@ -10,7 +10,7 @@
     "start": "npm run build && node build/index.js",
     "lint": "eslint . --ext .ts",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "docker": "docker-compose -f local-docker-compose.yml up"
+    "docker": "docker-compose -f local-docker-compose.yml up --build"
   },
   "repository": {
     "type": "git",

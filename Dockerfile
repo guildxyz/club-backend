@@ -48,11 +48,14 @@ RUN apk update --no-cache \
   && rm -rf /root/.npm \ 	
   && find ./ -name "*.md" -type f -delete \
   && rm -rf /usr/local/lib/node_modules/npm \
-  && rm -rf /usr/local/bin/LICENSE
+  && rm -rf /usr/local/bin/LICENSE \
+  && mkdir /app/data \
+  && chown node:node -R /app/data
 
 COPY --chown=node:node --from=builder /app/node_modules ./node_modules
 COPY --chown=node:node --from=builder /app/build ./build
 COPY --chown=node:node --from=builder /app/static ./static
+
 
 USER node
 
