@@ -56,6 +56,6 @@ COPY --chown=node:node --from=builder /app/static ./static
 
 USER node
 
-EXPOSE 8080
+EXPOSE 3000
 
 CMD ["/usr/local/bin/dumb-init", "node", "build/index.js" ]
