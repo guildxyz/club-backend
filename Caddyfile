@@ -8,7 +8,7 @@
   }
 }
 
-:4443 {
+{$DOMAIN}:4443 {
   log {
     level INFO
     output file /data/access.log {
@@ -16,6 +16,8 @@
       roll_keep 10
     }
   }
+
+  tls {$EMAIL}
 
   #encode gzip
   header {
@@ -26,7 +28,7 @@
         -Server
   }
 
-  reverse_proxy app:8080 {
+  reverse_proxy app:3000 {
        header_up X-Real-IP {remote_host}
   }
 }
