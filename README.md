@@ -7,7 +7,7 @@ The app in this repository is a backend for the Merkle Vesting contract found [h
 To run the project you need:
 
 - [Node.js](https://nodejs.org) development environment, version 14.13.1 or newer.
-- A file named `.env`. An example can be found in the project's root folder.
+- A file named `club-backend.env`. An example can be found in the project's root folder.
 
 ## Usage
 
@@ -29,7 +29,7 @@ Or, to start the project in development mode:
 npm run dev
 ```
 
-This will start the app on localhost on the port configured in the _.env_ file.
+This will start the app on localhost on the port configured in the _club-backend.env_ file.
 
 ## Endpoints
 
