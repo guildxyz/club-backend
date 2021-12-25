@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file:
+      - club-backend.env
+    ports:
+      - 127.0.0.1:3000:3000
+    volumes:
+      - lowdb:/app/merkle-db.json:rw
+
+volumes:
+  lowdb:

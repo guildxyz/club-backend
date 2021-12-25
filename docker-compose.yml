@@ -1,0 +1,46 @@
+version: "3.7"
+services:
+  app:
+    image: zgendao/club-backend:docker
+    restart: unless-stopped
+    env_file:
+      - club-backend.env
+    networks:
+      - proxy
+    volumes:
+      - lowdb:/app/merkle-db.json:rw
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+      - "com.centurylinklabs.watchtower.scope=club-stack"
+
+  watchtower:
+    image: containrrr/watchtower:latest
+    restart: unless-stopped
+    env_file:
+      - watchtower.env
+    command: --scope club-stack --cleanup --interval 30 --stop-timeout 30s
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+
+  caddy:
+    image: caddy:2.4.6-alpine
+    restart: unless-stopped
+    env_file:
+      - caddy.env
+    networks:
+      - proxy
+    ports:
+      - 80:8080
+      - 443:4443
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-config:/config:rw
+      - caddy-data:/data:rw
+
+volumes:
+  lowdb:
+  caddy-config:
+  caddy-data:
+
+networks:
+  proxy:
