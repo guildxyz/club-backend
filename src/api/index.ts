@@ -9,6 +9,7 @@ export default () => {
   api.get("/api/cohort-ids/:account", controller.getCohortIdsFor);
   api.get("/api/claim-data/:cohortId/:account", controller.getClaimData);
   api.get("/api/all-claim-data/:account", controller.getAllClaimData);
+  api.get("/api/all-data", controller.getAllData);
 
   api.post("/api/save-list", controller.saveList);
 
