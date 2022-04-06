@@ -4,7 +4,7 @@
 # Builder stage.
 # This state compile our TypeScript to get the JavaScript code
 #
-FROM node:17.2.0-alpine3.14 AS builder
+FROM node:17.8.0-alpine3.15 AS builder
 
 WORKDIR /app
 
@@ -20,7 +20,7 @@ RUN npm ci --quiet && npm run build
 # This state compile get back the JavaScript code from builder stage
 # It will also install the production package only
 #
-FROM node:17.2.0-alpine3.14 AS app
+FROM node:17.8.0-alpine3.15 AS app
 
 ENV NODE_ENV=production
 ENV TZ=Europe/Budapest
