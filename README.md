@@ -1,6 +1,6 @@
 # Seed Club Merkle Vesting Backend
 
-The app in this repository is a backend for the Merkle Vesting contract found [here](https://github.com/AgoraSpaceDAO/club-contracts). It allows creating Merkle trees from a supplied input and saves them in a database. All data is queryable and should make using the Merkle Vesting contract easier and more accessible.
+The app in this repository is a backend for the Merkle Vesting contract found [here](https://github.com/agoraxyz/club-contracts). It allows creating Merkle trees from a supplied input and saves them in a database. All data is queryable and should make using the Merkle Vesting contract easier and more accessible.
 
 ## Requirements
 

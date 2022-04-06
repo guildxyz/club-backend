@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AgoraSpaceDAO/club-backend.git"
+    "url": "git+https://github.com/agoraxyz/club-backend.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AgoraSpaceDAO/club-backend/issues"
+    "url": "https://github.com/agoraxyz/club-backend/issues"
   },
-  "homepage": "https://github.com/AgoraSpaceDAO/club-backend#readme",
+  "homepage": "https://github.com/agoraxyz/club-backend#readme",
   "engines": {
     "node": ">=14.13.1"
   },
