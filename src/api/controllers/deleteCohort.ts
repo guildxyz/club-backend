@@ -5,7 +5,7 @@ import ControllerFunction from "../../types/ControllerFunction.js";
 
 const deleteCohort: ControllerFunction = async (req, res) => {
   try {
-    const cohortId = req.body.cohortId;
+    const { cohortId } = req.body;
     if (verifySignature(cohortId, req.body.signature)) {
       await merkleDb.read();
       if (await isCohortInContract(cohortId))

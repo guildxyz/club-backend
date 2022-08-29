@@ -22,10 +22,11 @@ const getCohort: ControllerFunction = async (req, res) => {
     const cohortInDb = cohortId in merkleDb.data;
 
     switch (true) {
-      case cohortInContract && cohortInDb:
+      case cohortInContract && cohortInDb: {
         const formattedCohortData = await getCohortData(cohortId);
         res.status(200).json({ status: "Cohort found in both the db and in the contract", ...formattedCohortData });
         break;
+      }
       case !cohortInContract && cohortInDb:
         res.status(200).json({ status: "Cohort not added to the contract yet" });
         break;

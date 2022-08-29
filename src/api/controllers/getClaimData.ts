@@ -8,8 +8,10 @@ const getClaimData: ControllerFunction = async (req, res) => {
     switch (false) {
       case cohortId in merkleDb.data:
         res.status(404).json({ message: "Cohort not found" });
+        break;
       case account in merkleDb.data[cohortId]:
         res.status(404).json({ message: "Account not found in this cohort" });
+        break;
       default:
         res.status(200).json(merkleDb.data[cohortId][account]);
     }

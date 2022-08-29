@@ -5,7 +5,7 @@ const getCohortIdsFor: ControllerFunction = async (req, res) => {
   try {
     const { account } = req.params;
     const cohortIds = await getCohortIdsForAccount(account);
-    res.status(200).json({ cohortIds: cohortIds });
+    res.status(200).json({ cohortIds });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Unexpected error" });

@@ -4,7 +4,7 @@ const verifySignature = (message: object, signature: string) => {
   try {
     return getMessageSigner(JSON.stringify(message), signature) === process.env.ADMIN_ADDRESS;
   } catch (e) {
-    console.log(e);
+    console.error(e);
     throw e;
   }
 };
