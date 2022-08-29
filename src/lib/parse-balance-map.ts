@@ -1,7 +1,7 @@
-import { BigNumber, utils } from 'ethers'
+import { isAddress, getAddress } from '@ethersproject/address'
+import { BigNumber } from '@ethersproject/bignumber'
 import BalanceTree from './balance-tree.js'
 
-const { isAddress, getAddress } = utils
 
 // This is the blob that gets distributed and pinned to IPFS.
 // It is completely sufficient for recreating the entire merkle tree.
